@@ -3,7 +3,6 @@ import cors from "cors";
 import authRoutes from "../src/routes/auth.routes.js";
 import todoRoutes from "../src/routes/todo.routes.js";
 
-
 const app = express();
 
 // Enable CORS for all routes
@@ -19,10 +18,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  return res.status(200).json({
+    status: true,
+    message: "API is running",
+  });
+});
 
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
-
 
 export default app;
