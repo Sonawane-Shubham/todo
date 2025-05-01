@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "../src/routes/auth.routes.js";
 import todoRoutes from "../src/routes/todo.routes.js";
+import keepaliveRoutes from "../src/routes/keepalive.routes.js"
 
 const app = express();
 
@@ -26,7 +27,9 @@ app.get("/", (req, res) => {
 });
 
 //routes
+
 app.use("/api/auth", authRoutes);
 app.use("/api/todos", todoRoutes);
+app.use("/api", keepaliveRoutes);
 
 export default app;
